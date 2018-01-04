@@ -24,4 +24,19 @@ tabsRouter.get('/artist/:artist', (req, res) => {
 	});
 });
 
+tabsRouter.post('/url', (req, res) => {
+	// /api/tabs/url/
+
+    const { url } = req.body;
+
+	let tabUrl = url;
+	ugs.get(tabUrl, (error, tab) => {
+		if (error) {
+			res.status(500).json(error);
+		  } else {
+			res.status(200).json(tab);
+		  }
+	});
+});
+
 module.exports = tabsRouter;

@@ -1,0 +1,22 @@
+{
+    "name": "Lambda Guitar",
+    "version": "1.0.0",
+    "description": "Lambda School Hackathon Project",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "author": "Tyler Sanford, Tyler Long, Collin Ferguson, David Peterman",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "knex": "^0.14.2",
+        "mysql": "^2.15.0",
+        "node-gyp": "^3.6.2",
+        "node-pre-gyp": "^0.6.39",
+        "nodemon": "^1.14.3",
+        "source": "0.0.3",
+        "sqlite3": "^3.1.13"
+    }
+}

@@ -6,13 +6,13 @@ const tabsRouter = express.Router();
 
 const db = require('../configuration/db.js');
 
-tabsRouter.get('/:artist', (req, res) => {
-	// /api/tabs/:artist
+tabsRouter.get('/artist/:query', (req, res) => {
+	// /api/tabs/artist/:query
 
-    const { artist } = req.params;
+    const { query } = req.params;
 
     ugs.advanceSearch({
-		bandName: artist,
+		bandName: query,
 		page: 1,
 		type: ['tabs', 'chords']
 	  }, (error, tabs) => {
@@ -24,14 +24,13 @@ tabsRouter.get('/:artist', (req, res) => {
 	});
 });
 
-tabsRouter.get('/:artist/:song', (req, res) => {
-	// /api/tabs/:artist/:song
+tabsRouter.get('/song/:query', (req, res) => {
+	// /api/tabs/song/:query
 
-	const { artist, song } = req.params;
+	const { query } = req.params;
 
-    ugs.advanceSearch({
-		bandName: artist,
-		songName: song,
+    ugs.search({
+		query,
 		page: 1,
 		type: ['tabs', 'chords']
 	  }, (error, tabs) => {

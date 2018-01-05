@@ -44,19 +44,6 @@ export default class Search extends Component {
     }
 
     componentDidMount() {
-        // let option = this.props.match.params.option;
-        // let query  = this.props.match.params.query;
-        // console.log(option, '<---option--query---->', query);
-        // let url = `http://localhost:3000/api/tabs/${option}/${query}`;
-        // axios.get(url)
-        // .then((searchResult) => {
-        //     this.setState({
-        //         tabs: searchResult
-        //     })
-        // })
-        // .catch((err) => {
-        //     console.log('axios FAILED!!!!  \n',err)
-        // })
         let propTabs = this.props.result
         if (propTabs) {
             this.setState({
@@ -76,16 +63,23 @@ export default class Search extends Component {
     render() {
         return (
             <div>
+                <table className={this.state.activeTab.length > 0 ? 'hidden' : "table table-dark"}>
+                <thead><tr><th scope="col">Song Name</th><th scope="col">Artist Name</th><th scope="col">Rating</th></tr></thead>
+                <tbody>
                 {this.state.tabs ? this.state.tabs.map((tab, index) => {
                     if (tab.type === 'tabs' || tab.type === 'chords') {
                         return (
-                            <div className={this.state.activeTab.length > 0 ? 'hidden' : 'song'} key={`${index}guy`}>
-                                <button onClick={this.handleTab.bind(this)} value={tab.url} >{tab.artist} - {tab.name}</button>
-                            </div>
+                            <tr className={this.state.activeTab.length > 0 ? 'hidden' : 'song'} key={`${index}guy`}>
+                                <td><button className='btn btn-outline-danger' onClick={this.handleTab.bind(this)} value={tab.url} >{tab.name}</button> - {tab.type}</td>
+                                <td>{tab.artist}</td>
+                                <td>{tab.rating}</td>
+                            </tr>
                     ) } else {
                         return;
                     }
                 }) : <p> no tabs found </p>}
+                </tbody>
+                </table>
                 {this.state.activeTab.length > 0 ? <Tab url={this.state.activeTab}/> : null}
             </div>
         )

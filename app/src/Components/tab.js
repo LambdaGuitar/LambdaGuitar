@@ -15,7 +15,7 @@ export default class Tab extends Component {
 
     componentDidMount() {
         let url = `http://localhost:3000/api/tabs/url`;
-        // let url = `/tabs/url`;
+        // let url = `/api/tabs/url`;
         // console.log(this.props.url);
         axios.post(url, { url: this.props.url })
         .then((songBack) => {

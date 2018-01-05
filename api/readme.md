@@ -1,4 +1,4 @@
-| # Documentation for Lambda Guitar
+# Documentation for Lambda Guitar
 
 ### Tabs
 

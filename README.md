@@ -1,6 +1,6 @@
 # LambdaGuitar 
 
-### LambdaGuitar is an App that utilizies the vast Ultimate-Guitar database to simplify the search and display of stringed instrument tablature and chord charts
+### LambdaGuitar is an web app that utilizes the vast Ultimate-Guitar database to simplify the search and display of stringed instrument tablature and chord charts
 
 ### Deployed Link:
 

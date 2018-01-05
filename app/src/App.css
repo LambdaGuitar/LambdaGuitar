@@ -3,5 +3,9 @@
 }
 
 .song {
-    color: blue;
+    color: rgb(128, 109, 235);
+}
+
+body {
+    background-color: rgb(2, 27, 41);
 }

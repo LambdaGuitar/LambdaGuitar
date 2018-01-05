@@ -46,6 +46,34 @@ class App extends Component {
         console.log('search....');
         console.log(this.props);
         axios.get(`http://localhost:3000/api/tabs/${this.state.option}/${this.state.searchedQuery}`)
+  handleSearch() {
+    //let axiosURL = `http://localhost:3000/api/tabs/${this.state.option}/${this.state.searchedQuery}`
+    let axiosURL = `/api/tabs/${this.state.option}/${this.state.searchedQuery}`;
+    axios.get(axiosURL)
+        .then((searchResult) => {
+          console.log(`searchResult => ${searchResult}`);
+            this.setState({
+                result: searchResult.data,
+                option: this.state.option,
+                searchedQuery: this.state.searchedQuery
+            })
+            this.props.history.push(`/`);
+            this.props.history.push(`/search`);
+        })
+        .catch((err) => {
+            console.log('axios FAILED!!!!  \n', err)
+        })
+  }
+
+  handleEnter(e) {
+    if (e.key !== 'Enter') {
+        return;
+    }
+    console.log('search....');
+    console.log(this.props);
+    //let axiosURL = `http://localhost:3000/api/tabs/${this.state.option}/${this.state.searchedQuery}`
+    let axiosURL = `/api/tabs/${this.state.option}/${this.state.searchedQuery}`;
+    axios.get(axiosURL)
         .then((searchResult) => {
             console.log(`searchResult => ${searchResult}`);
             this.setState({
@@ -53,11 +81,11 @@ class App extends Component {
                 option: this.state.option,
                 searchedQuery: this.state.searchedQuery
             })
-            this.props.history.push(`/`)
-            this.props.history.push(`/search`)
+            this.props.history.push(`/`);
+            this.props.history.push(`/search`);
         })
         .catch((err) => {
-            console.log('axios FAILED!!!!  \n', err)
+            console.log('axios FAILED!!!!  \n', err);
         })
     }
 

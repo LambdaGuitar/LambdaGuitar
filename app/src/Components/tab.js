@@ -14,8 +14,9 @@ export default class Tab extends Component {
     }
 
     componentDidMount() {
-        let url = `http://localhost:3000/api/tabs/url`;
-        console.log(this.props.url);
+        // let url = `http://localhost:3000/api/tabs/url`;
+        let url = `/api/tabs/url`;
+        // console.log(this.props.url);
         axios.post(url, { url: this.props.url })
         .then((songBack) => {
             console.log('tab back',songBack.data);
@@ -33,9 +34,12 @@ export default class Tab extends Component {
     render() {
         return (
             <div>
-                <h1>{this.state.song}</h1>
-                <h1>by {this.state.artist}</h1>
-                <p style={{fontFamily: 'elronet, monospace', whiteSpace: 'pre-wrap'}}>{`${this.state.tabText}`}</p>
+            <div style={{justifyContent: 'center', display: 'flex'}}>
+                <h1 style={{color: 'yellow', fontFamily: 'futura'}}>{this.state.song} - {this.state.artist}</h1>
+                </div>
+                <div style={{justifyContent: 'center', display: 'flex'}}>
+                <p style={{fontFamily: 'elronet, monospace', whiteSpace: 'pre-wrap', color: 'white'}}>{`${this.state.tabText}`}</p>
+            </div>
             </div>
         )
     }

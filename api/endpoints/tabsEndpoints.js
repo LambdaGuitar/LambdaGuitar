@@ -42,6 +42,25 @@ tabsRouter.get('/song/:query', (req, res) => {
 	});
 });
 
+tabsRouter.get('/:artist/:song', (req, res) => {
+	// /api/tabs/:artist/:song
+
+	const { artist, song } = req.params;
+
+	ugs.advanceSearch({
+		bandName: artist,
+		songName: song,
+		page: 1,
+	}, (error, tabs) => {
+		if (error) {
+		  res.status(500).json(error);
+		} else {
+		  res.status(200).json(tabs);
+		}
+	});
+
+})
+
 tabsRouter.post('/url', (req, res) => {
 	// /api/tabs/url/
 

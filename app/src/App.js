@@ -53,6 +53,7 @@ class App extends Component {
                 option: this.state.option,
                 searchedQuery: this.state.searchedQuery
             })
+            this.props.history.push(`/`)
             this.props.history.push(`/search`)
         })
         .catch((err) => {
@@ -80,7 +81,6 @@ class App extends Component {
         <Route path='/search' render={(props) => (
           <Search {...props} result={this.state.result} />
         )}/>
-        <Route path='/tab/:artist/:song' component={Tab}/>
       </div>
     );
   }

@@ -14,10 +14,9 @@ export default class Tab extends Component {
     }
 
     componentDidMount() {
-        let artist= this.props.match.params.artist;
-        let song  = this.props.match.params.song;
-        let url = `http://localhost:3000/api/tabs/${artist}/${song}`;
-        axios.get(url)
+        let url = `http://localhost:3000/api/tabs/url`;
+        console.log(this.props.url);
+        axios.post(url, { url: this.props.url })
         .then((songBack) => {
             console.log('tab back',songBack.data);
             this.setState({
@@ -36,7 +35,7 @@ export default class Tab extends Component {
             <div>
                 <h1>{this.state.song}</h1>
                 <h1>by {this.state.artist}</h1>
-                <p style={{fontFamily: 'elronet, monospace'}}>{this.state.tabText}</p>
+                <p style={{fontFamily: 'elronet, monospace', whiteSpace: 'pre-wrap'}}>{`${this.state.tabText}`}</p>
             </div>
         )
     }

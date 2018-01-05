@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Tab from './tab.js'
 
 export default class Search extends Component {
     constructor(props) {
@@ -65,17 +66,27 @@ export default class Search extends Component {
         console.log(propTabs);
     }
 
+    handleTab(e) {
+        let songURL = e.target.value;
+        this.setState({
+            activeTab: songURL
+        })
+    }
+
     render() {
         return (
             <div>
                 {this.state.tabs ? this.state.tabs.map((tab, index) => {
-                    let tabURL = `/tab/${tab.artist.replace(' ','_')}/${tab.name.replace(' ','_')}`
-                    return (
-                        <div className={this.state.activeTab.length > 0 ? 'hidden' : 'song'} key={`${index}guy`}>
-                            <Link key={index} to={tabURL}>{tab.artist} - {tab.name}</Link>
-                        </div>
-                    )
+                    if (tab.type === 'tabs' || tab.type === 'chords') {
+                        return (
+                            <div className={this.state.activeTab.length > 0 ? 'hidden' : 'song'} key={`${index}guy`}>
+                                <button onClick={this.handleTab.bind(this)} value={tab.url} >{tab.artist} - {tab.name}</button>
+                            </div>
+                    ) } else {
+                        return;
+                    }
                 }) : <p> no tabs found </p>}
+                {this.state.activeTab.length > 0 ? <Tab url={this.state.activeTab}/> : null}
             </div>
         )
     }

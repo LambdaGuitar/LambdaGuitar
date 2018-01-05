@@ -38,8 +38,7 @@ class App extends Component {
   }
 
   handleSearch() {
-    //let axiosURL = `http://localhost:3000/api/tabs/${this.state.option}/${this.state.searchedQuery}`
-    let axiosURL = `/api/tabs/${this.state.option}/${this.state.searchedQuery}`;
+    let axiosURL = `http://localhost:3000/api/tabs/${this.state.option}/${this.state.searchedQuery}`
     axios.get(axiosURL)
         .then((searchResult) => {
           console.log(`searchResult => ${searchResult}`);
@@ -62,8 +61,7 @@ class App extends Component {
     }
     console.log('search....');
     console.log(this.props);
-    //let axiosURL = `http://localhost:3000/api/tabs/${this.state.option}/${this.state.searchedQuery}`
-    let axiosURL = `/api/tabs/${this.state.option}/${this.state.searchedQuery}`;
+    let axiosURL = `http://localhost:3000/api/tabs/${this.state.option}/${this.state.searchedQuery}`
     axios.get(axiosURL)
         .then((searchResult) => {
           console.log(`searchResult => ${searchResult}`);
